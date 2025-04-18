@@ -1,5 +1,5 @@
+import 'package:covid_app/services/routes/routes_name.dart';
 import 'package:covid_app/services/states_services.dart';
-import 'package:covid_app/view/countries_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -49,6 +49,7 @@ class _WorldStateScreenState extends State<WorldStateScreen>
               FutureBuilder(
                 future: statesServices.fetchWorldStatesRecords(),
                 builder: (context, snapshot) {
+                  /* If data is not comming from the server then Loader will be displayed. */
                   if (!snapshot.hasData) {
                     return SizedBox(
                       height: height * 0.8,
@@ -118,13 +119,13 @@ class _WorldStateScreenState extends State<WorldStateScreen>
                             ),
                           ),
                         ),
+                        /* This one is the button when user click on it, the list of countries will be displayed. */
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        CountriesListScreen()));
+                            Navigator.pushNamed(
+                              context,
+                              RoutesName.countriesListScreen,
+                            );
                           },
                           child: Container(
                             height: 60,
