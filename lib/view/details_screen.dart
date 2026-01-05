@@ -3,26 +3,10 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class DetailsScreen extends StatefulWidget {
-  String? name;
-  String? image;
-  int? totalCases,
-      totalDeaths,
-      totalRecovered,
-      todayRecovered,
-      test,
-      active,
-      critical;
+  dynamic data;
   DetailsScreen({
     super.key,
-    required this.active,
-    required this.critical,
-    required this.image,
-    required this.name,
-    required this.test,
-    required this.todayRecovered,
-    required this.totalCases,
-    required this.totalDeaths,
-    required this.totalRecovered,
+    required this.data,
   });
 
   @override
@@ -35,7 +19,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     final sizeOfDevice = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.name!),
+        title: Text(widget.data["name"]!),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -49,13 +33,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.02),
+                    horizontal: sizeOfDevice.width * 0.02),
                 child: Stack(
                   alignment: AlignmentDirectional.topCenter,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.067),
+                      padding:
+                          EdgeInsets.only(top: sizeOfDevice.height * 0.067),
                       child: Card(
                         child: Column(
                           children: [
@@ -64,31 +48,33 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             ),
                             ReusableRow(
                               title: 'Cases',
-                              value: widget.totalCases!.toString(),
+                              value: widget.data["totalCases"]!.toString(),
                             ),
                             ReusableRow(
                               title: 'Recovered',
-                              value: widget.totalRecovered!.toString(),
+                              value: widget.data["totalRecovered"]!.toString(),
                             ),
                             ReusableRow(
                               title: 'Critical',
-                              value: widget.critical!.toString(),
+                              value: widget.data["critical"]!.toString(),
                             ),
                             ReusableRow(
                               title: 'Deaths',
-                              value: widget.totalDeaths!.toString(),
+                              value: widget.data["totalDeaths"]!.toString(),
                             ),
                             ReusableRow(
                               title: 'Today Recovered',
-                              value: widget.todayRecovered!.toString(),
+                              value: widget.data["todayRecovered"]!.toString(),
                             ),
                           ],
                         ),
                       ),
                     ),
+                    /* This one is for country flag. */
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(widget.image!.toString()),
+                      backgroundImage:
+                          NetworkImage(widget.data["image"]!.toString()),
                     )
                   ],
                 ),

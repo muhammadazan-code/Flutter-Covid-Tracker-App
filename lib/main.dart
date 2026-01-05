@@ -1,4 +1,5 @@
-import 'package:covid_app/view/splash_screen.dart';
+import 'package:covid_app/services/routes/routes_name.dart';
+import 'package:covid_app/services/routes_services.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: RoutesName.splashScreen,
+      onGenerateRoute: RoutesServices.generateRoute,
       title: 'Covid app',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
     );
   }
 }

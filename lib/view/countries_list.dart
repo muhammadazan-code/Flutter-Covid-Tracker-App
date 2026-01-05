@@ -1,5 +1,5 @@
+import 'package:covid_app/services/routes/routes_name.dart';
 import 'package:covid_app/services/states_services.dart';
-import 'package:covid_app/view/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -87,28 +87,27 @@ class _CountriesListScreenState extends State<CountriesListScreen> {
                                 onTap: () {
                                   setState(() {});
                                   FocusScope.of(context).unfocus();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DetailsScreen(
-                                        active: snapshot.data![index]['active'],
-                                        critical: snapshot.data![index]
+                                  Navigator.pushNamed(
+                                      context, RoutesName.detailsScreen,
+                                      arguments: {
+                                        "active": snapshot.data![index]
+                                            ['active'],
+                                        "critical": snapshot.data![index]
                                             ['critical'],
-                                        image: snapshot.data![index]
+                                        "image": snapshot.data![index]
                                             ['countryInfo']['flag'],
-                                        name: snapshot.data![index]['country'],
-                                        test: snapshot.data![index]['test'],
-                                        todayRecovered: snapshot.data![index]
+                                        "name": snapshot.data![index]
+                                            ['country'],
+                                        "test": snapshot.data![index]['test'],
+                                        "todayRecovered": snapshot.data![index]
                                             ['todayRecovered'],
-                                        totalCases: snapshot.data![index]
+                                        "totalCases": snapshot.data![index]
                                             ['cases'],
-                                        totalDeaths: snapshot.data![index]
+                                        "totalDeaths": snapshot.data![index]
                                             ['deaths'],
-                                        totalRecovered: snapshot.data![index]
+                                        "totalRecovered": snapshot.data![index]
                                             ['recovered'],
-                                      ),
-                                    ),
-                                  );
+                                      });
                                 },
                                 child: ListTile(
                                   title: Text(countryNames.toString()),
@@ -133,31 +132,31 @@ class _CountriesListScreenState extends State<CountriesListScreen> {
                                 onTap: () {
                                   setState(() {});
                                   FocusScope.of(context).unfocus();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DetailsScreen(
-                                        active: snapshot.data![index]['active'],
-                                        critical: snapshot.data![index]
+                                  Navigator.pushNamed(
+                                      context, RoutesName.detailsScreen,
+                                      arguments: {
+                                        "active": snapshot.data![index]
+                                            ['active'],
+                                        "critical": snapshot.data![index]
                                             ['critical'],
-                                        image: snapshot.data![index]
+                                        "image": snapshot.data![index]
                                             ['countryInfo']['flag'],
-                                        name: snapshot.data![index]['country'],
-                                        test: snapshot.data![index]['test'],
-                                        todayRecovered: snapshot.data![index]
+                                        "name": snapshot.data![index]
+                                            ['country'],
+                                        "test": snapshot.data![index]['test'],
+                                        "todayRecovered": snapshot.data![index]
                                             ['todayRecovered'],
-                                        totalCases: snapshot.data![index]
+                                        "totalCases": snapshot.data![index]
                                             ['cases'],
-                                        totalDeaths: snapshot.data![index]
+                                        "totalDeaths": snapshot.data![index]
                                             ['deaths'],
-                                        totalRecovered: snapshot.data![index]
+                                        "totalRecovered": snapshot.data![index]
                                             ['recovered'],
-                                      ),
-                                    ),
-                                  );
+                                      });
                                 },
                                 child: ListTile(
                                   title: Text(countryNames.toString()),
+                                  // Country
                                   leading: Image(
                                     height: 60,
                                     width: 50,
