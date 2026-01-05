@@ -1,4 +1,5 @@
 import 'package:covid_app/services/routes/routes_name.dart';
+import 'package:covid_app/services/States/states_services.dart';
 import 'package:covid_app/services/states_services.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
